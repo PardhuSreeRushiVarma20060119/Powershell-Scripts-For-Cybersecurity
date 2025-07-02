@@ -76,7 +76,9 @@ A curated collection of PowerShell scripts for red team operations, blue team de
 
 ## 📜 License
 
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/). Feel free to fork, modify, and contribute responsibly.
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this project under the terms of the license.  
+See the [LICENSE](LICENSE) file for full details.
 
 ---
 
