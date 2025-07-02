@@ -85,6 +85,7 @@ See the [LICENSE](LICENSE) file for full details.
 ## 💬 Contributions
 
 Pull requests are welcome! Please submit ethically sound, well-documented scripts only.
+Check out [CONTRIBUTING.md](CONTRIBUTING.md), For More Details.
 
 ---
 
