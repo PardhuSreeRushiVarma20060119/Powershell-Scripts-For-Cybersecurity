@@ -1,146 +1,91 @@
+# 🛠️ Custom PowerShell Scripts for Cybersecurity
 
-# 🛡️ Custom PowerShell Scripts for Cybersecurity
+A curated collection of PowerShell scripts for red team operations, blue team defense, reconnaissance, and auditing. These scripts are designed for **educational, research, and authorized security testing purposes only**.
 
-A curated collection of essential PowerShell scripts for **Red Team**, **Blue Team**, **Reconnaissance**, and **Audit** operations. This repository is designed to assist cybersecurity professionals, students, and researchers with powerful one-liners and tools for offensive and defensive purposes — all in one place.
-
----
-
-## 📁 Directory Structure
-
-```
-custom-scripts/
-├── RedTeam/          # Offensive enumeration, token abuse, persistence
-├── BlueTeam/         # Logging, monitoring, threat detection
-├── Recon/            # System, network, and AD recon
-├── Audit/            # Post-exploitation or audit phase enumeration
-└── README.md         # You're here!
-```
+> ⚠️ **Disclaimer:** These scripts are intended for ethical use in lab environments, red team engagements, or defensive monitoring only. **Do not use** these on systems you do not own or without proper authorization. Misuse may be illegal and unethical.
 
 ---
 
-## 🔴 RedTeam Scripts
+## 📁 Categories
 
-| Script                      | Description                                     |
-|-----------------------------|-------------------------------------------------|
-| `Invoke-LSASSDump.ps1`      | Dumps lsass memory using comsvcs.dll            |
-| `Find-AVProcesses.ps1`      | Detects running AV or EDR processes             |
-| `Bypass-UAC.ps1`            | Bypasses UAC via registry hijack                |
-| `Invoke-TokenManipulation.ps1` | Impersonates or duplicates user tokens     |
-| `Dump-ChromePasswords.ps1`  | Extracts Chrome stored credentials (lab use)    |
-| `Invoke-PhantomUser.ps1`    | Creates a hidden/phantom user                   |
-| `Enumerate-PrivEscVectors.ps1` | Finds services vulnerable to privilege escalation |
+- [🔴 Red Team Scripts](#-red-team-scripts)
+- [🔵 Blue Team Scripts](#-blue-team-scripts)
+- [🕵️ Recon Scripts](#-recon-scripts)
+- [🛡️ Audit Scripts](#-audit-scripts)
 
 ---
 
-## 🔵 BlueTeam Scripts
+## 🔴 Red Team Scripts
 
-| Script                      | Description                                     |
-|-----------------------------|-------------------------------------------------|
-| `Monitor-FileChanges.ps1`   | Real-time file system change watcher            |
-| `Get-UserLoginHistory.ps1`  | Parses event logs for user logins               |
-| `Check-PowerShellLogging.ps1` | Verifies logging status for scripts/modules  |
-| `Enable-SecurityAuditing.ps1` | Enables key Windows audit policies           |
-| `Start-DefenderScan.ps1`    | Triggers Windows Defender quick/full scan       |
-| `Detect-MimikatzArtifacts.ps1` | Detects common signs of memory tampering   |
-| `Monitor-RegistryChanges.ps1` | Monitors sensitive registry keys             |
-| `Extract-USBHistory.ps1`    | Lists all USB devices historically connected    |
-
----
-
-## 📡 Recon Scripts
-
-| Script                      | Description                                     |
-|-----------------------------|-------------------------------------------------|
-| `Get-OpenPorts.ps1`         | Scans ports on remote hosts                     |
-| `Get-SystemInfoReport.ps1`  | Collects system-level info (OS, BIOS, arch)     |
-| `Find-AdminShares.ps1`      | Discovers admin shares across the LAN           |
-| `Invoke-ADRecon.ps1`        | Performs Active Directory structure recon       |
-| `Get-NetworkAdapters.ps1`   | Shows all NICs, IPs, MAC addresses              |
-| `Dump-ARPTable.ps1`         | Pulls ARP table from system                     |
-| `Resolve-DNS.ps1`           | Performs DNS resolution for targets             |
-| `Get-InstalledPrograms.ps1` | Lists registry-based installed apps             |
-| `Get-UserGroups.ps1`        | Maps local users to their group memberships     |
+| Script | Description |
+|--------|-------------|
+| `Invoke-LSASSDump.ps1` | Dumps LSASS memory using `rundll32` and `comsvcs.dll`. |
+| `Find-AVProcesses.ps1` | Detects common antivirus/EDR processes. |
+| `Bypass-UAC.ps1` | Bypasses UAC using registry hijack with `eventvwr.exe`. |
+| `Invoke-TokenManipulation.ps1` | Enumerates privileges and tokens for potential abuse. |
+| `Dump-ChromePasswords.ps1` | Copies Chrome's Login Data SQLite DB for offline credential extraction. |
+| `Invoke-PhantomUser.ps1` | Creates a stealthy local admin user for persistence. |
+| `Enumerate-PrivEscVectors.ps1` | Lists auto-started services to find privilege escalation paths. |
 
 ---
 
-## 🕵️ Audit Scripts
+## 🔵 Blue Team Scripts
 
-| Script                      | Description                                     |
-|-----------------------------|-------------------------------------------------|
-| `Get-ScheduledPersistence.ps1` | Finds tasks with persistence behavior     |
-| `Invoke-WhoamiAll.ps1`      | Detailed privilege and identity dump            |
-| `Audit-LocalAdmins.ps1`     | Lists all local admin accounts                  |
-| `List-Startups.ps1`         | Checks registry and folders for autoruns       |
-| `Audit-FirewallRules.ps1`   | Dumps all configured Windows firewall rules     |
-| `Check-UnsignedDrivers.ps1` | Detects unsigned drivers (rootkit indicator)    |
-| `Detect-SuspiciousProcesses.ps1` | Flags odd child-parent process trees     |
-
----
-
-## ⚙️ Usage
-
-To run any script:
-
-```powershell
-# Run script in PowerShell (Administrator recommended)
-.\RedTeam\Invoke-LSASSDump.ps1
-```
-
-Or import functions:
-
-```powershell
-Import-Module .\BlueTeam\Check-PowerShellLogging.ps1
-Check-PowerShellLogging
-```
-
-> ⚠️ **Some scripts require Administrator privileges. Use responsibly.**
+| Script | Description |
+|--------|-------------|
+| `Monitor-FileChanges.ps1` | Watches directory for file changes in real-time. |
+| `Get-UserLoginHistory.ps1` | Parses Event Logs for logon success/failure attempts. |
+| `Check-PowerShellLogging.ps1` | Checks status of PowerShell ScriptBlock/Module logging. |
+| `Enable-SecurityAuditing.ps1` | Enables full system auditing via `auditpol`. |
+| `Start-DefenderScan.ps1` | Triggers a full Windows Defender scan. |
+| `Detect-MimikatzArtifacts.ps1` | Scans logs for signs of Mimikatz usage. |
+| `Monitor-RegistryChanges.ps1` | Watches registry file writes in System32. |
+| `Extract-USBHistory.ps1` | Lists historical USB device connections. |
 
 ---
 
-## 🔐 Legal & Ethical Use Disclaimer
+## 🕵️ Recon Scripts
 
-> This repository is intended for **educational**, **research**, and **authorized penetration testing** purposes **only**.  
-> Misuse of any script for unauthorized access, privilege escalation, or privacy violations is strictly forbidden.  
-> You are solely responsible for any consequences arising from improper use.
-
----
-
-## 🧠 MITRE ATT&CK Mapping (Examples)
-
-| Script                      | ATT&CK Technique ID | Name                           |
-|-----------------------------|----------------------|--------------------------------|
-| `Invoke-LSASSDump.ps1`      | T1003.001             | Credential Dumping: LSASS      |
-| `Get-UserLoginHistory.ps1`  | T1078                 | Valid Accounts                 |
-| `Bypass-UAC.ps1`            | T1548.002             | Abuse Elevation Control        |
-| `Invoke-PhantomUser.ps1`    | T1136                 | Create Account                 |
-| `Monitor-RegistryChanges.ps1` | T1112              | Modify Registry                |
-
-> For full mapping: [https://attack.mitre.org](https://attack.mitre.org)
+| Script | Description |
+|--------|-------------|
+| `Get-OpenPorts.ps1` | Scans local/remote ports using `Test-NetConnection`. |
+| `Get-SystemInfoReport.ps1` | Summarizes system and OS info. |
+| `Find-AdminShares.ps1` | Finds admin shares on a list of hosts. |
+| `Invoke-ADRecon.ps1` | Extracts user, title, group info from AD. |
+| `Get-NetworkAdapters.ps1` | Lists adapter name, MAC, link speed. |
+| `Dump-ARPTable.ps1` | Displays ARP cache entries. |
+| `Resolve-DNS.ps1` | Resolves given domain to IP. |
+| `Get-InstalledPrograms.ps1` | Lists installed applications from registry. |
+| `Get-UserGroups.ps1` | Maps local users to their groups. |
 
 ---
 
-## 📦 Coming Soon
+## 🛡️ Audit Scripts
 
-- Script signing
-- Auto-installer (`install.ps1`)
-- GitHub Actions Linter
-- Shellcode / obfuscation modules (advanced)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.  
-See the `LICENSE` file for details.
+| Script | Description |
+|--------|-------------|
+| `Get-ScheduledPersistence.ps1` | Lists scheduled tasks excluding Microsoft defaults. |
+| `Invoke-WhoamiAll.ps1` | Dumps full token info for current user. |
+| `Audit-LocalAdmins.ps1` | Shows local administrators group members. |
+| `List-Startups.ps1` | Lists auto-run programs via registry. |
+| `Audit-FirewallRules.ps1` | Enumerates all configured firewall rules. |
+| `Check-UnsignedDrivers.ps1` | Finds device drivers lacking digital signatures. |
+| `Detect-SuspiciousProcesses.ps1` | Flags high-CPU or parentless processes. |
 
 ---
 
-## 👨‍💻 Author
+## 📜 License
 
-**PardhuVarma**  
-Cybersecurity | Red Team Operations.  
-> *“Scripts don’t hack systems. People do.”*
+This project is licensed under the [MIT License](). Feel free to fork, modify, and contribute responsibly.
 
 ---
 
-## 🌟 Give this repo a ⭐ if it helps you!
+## 💬 Contributions
+
+Pull requests are welcome! Please submit ethically sound, well-documented scripts only.
+
+---
+
+## 🔒 Reminder
+
+This repository is for **educational and authorized security research only**. Abide by legal and ethical standards at all times.
